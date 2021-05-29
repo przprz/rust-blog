@@ -1957,7 +1957,7 @@ impl<A, B> PartialEq<&'_ mut B> for &'_ mut A
 where A: PartialEq<B> + ?Sized, B: ?Sized;
 ```
 
-Since this trait is generic we can define equality between different types. The standard library leverages this to allow checking equality between the many string-like types such as `String`, `&str`, `PathBuf`, `&Path`, `OsString`, `&OsStr`, and so on.
+Since this trait is generic we fine equality between different types. The standard library leverages this to allow checking equality between the many string-like types such as `String`, `&str`, `PathBuf`, `&Path`, `OsString`, `&OsStr`, and so on.
 
 Generally, we should only impl equality between different types _if they contain the same kind of data_ and the only difference between the types is how they represent the data or how they allow interacting with the data.
 
@@ -2836,7 +2836,7 @@ trait DerefMut: Deref {
 }
 ```
 
-`Deref<Target = T>` types can dereferenced to `T` types using the dereference operator `*`. This has obvious use-cases for smart pointer types like `Box` and `Rc`. However, we rarely see the dereference operator explicitly used in Rust code, and that's because of a Rust feature called _deref coercion_.
+`Deref<Target = T>` types can be dereferenced to `T` types using the dereference operator `*`. This has obvious use-cases for smart pointer types like `Box` and `Rc`. However, we rarely see the dereference operator explicitly used in Rust code, and that's because of a Rust feature called _deref coercion_.
 
 Rust automatically dereferences types when they're being passed as function arguments, returned from a function, or used as part of a method call. This is the reason why we can pass `&String` and `&Vec<T>` to functions expecting `&str` and `&[T]` because `String` impls `Deref<Target = str>` and `Vec<T>` impls `Deref<Target = [T]>`.
 
